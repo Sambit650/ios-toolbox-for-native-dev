@@ -1,0 +1,38 @@
+name: Swift Package CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/*' # You can change this to any other branch pattern
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      # Checkout the code from GitHub
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Swift environment
+      - name: Set up Swift
+        uses: swiftci/actions/setup-swift@v1
+        with:
+          swift-version: '5.5' # You can specify the Swift version here
+
+      # Build the package
+      - name: Build package
+        run: swift build
+
+      # Run unit tests
+      - name: Run tests
+        run: swift test --disable-sandbox # Add other test options if needed
+
+      # (Optional) Publish coverage report (if you have a code coverage setup)
+      # - name: Upload coverage results
+      #   uses: codecov/codecov-action@v2
+
