@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'release/*' # You can change this to any other branch pattern
+      - 'release/*'
   pull_request:
     branches:
       - main
@@ -22,7 +22,7 @@ jobs:
       - name: Set up Swift
         uses: swiftci/actions/setup-swift@v1
         with:
-          swift-version: '5.5' # You can specify the Swift version here
+          swift-version: '5.5'
 
       # Build the package
       - name: Build package
@@ -30,7 +30,7 @@ jobs:
 
       # Run unit tests
       - name: Run tests
-        run: swift test --disable-sandbox # Add other test options if needed
+        run: swift test --disable-sandbox
 
       # (Optional) Publish coverage report (if you have a code coverage setup)
       # - name: Upload coverage results
