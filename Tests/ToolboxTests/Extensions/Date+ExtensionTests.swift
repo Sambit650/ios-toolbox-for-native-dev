@@ -17,7 +17,7 @@ struct DateExtensionTests {
     ("2025/02/02", "02 Feb 2025"),
     ("2025/12/25", "25 Dec 2025")
   ])
-  func formateDateDDMMYYYY(input: (dateString: String, expected: String)) async throws {
+  func test_formateDateDDMMYYYY(input: (dateString: String, expected: String)) async throws {
     // Given
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy/MM/dd"
