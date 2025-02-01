@@ -6,10 +6,10 @@ Welcome to the iOS Development Toolbox! This repository offers a comprehensive c
 
 ## Table of Contents
 - [Features](#-Features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Contact](#contact)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Contributing](#-contributing)
+- [Contact](#-contact)
 
 ## ✨ Features
 
