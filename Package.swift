@@ -4,20 +4,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "GuidingStar",
+    name: "Toolbox",
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "GuidingStar",
-            targets: ["GuidingStar"]),
+            name: "Toolbox",
+            targets: ["Toolbox"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "GuidingStar"),
+            name: "Toolbox"),
         .testTarget(
-            name: "GuidingStarTests",
-            dependencies: ["GuidingStar"]),
+            name: "ToolboxTests",
+            dependencies: ["Toolbox"]),
     ]
 )
