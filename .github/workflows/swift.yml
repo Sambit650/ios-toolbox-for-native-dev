@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'release/*'
+      - 'release/*' # You can change this to any other branch pattern
   pull_request:
     branches:
       - main
@@ -18,11 +18,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Set up Swift environment
+      # Set up Swift using the correct action
       - name: Set up Swift
-        uses: swiftci/actions/setup-swift@v1
+        uses: actions/setup-swift@v1
         with:
-          swift-version: '5.5'
+          swift-version: '5.5'  # Replace with the desired Swift version
 
       # Build the package
       - name: Build package
@@ -30,9 +30,4 @@ jobs:
 
       # Run unit tests
       - name: Run tests
-        run: swift test --disable-sandbox
-
-      # (Optional) Publish coverage report (if you have a code coverage setup)
-      # - name: Upload coverage results
-      #   uses: codecov/codecov-action@v2
-
+        run: swift test --disable-sandbox # Add other test options if needed
