@@ -16,7 +16,7 @@ jobs:
     steps:
       # Checkout the code from GitHub
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: swift-actions/setup-swift@v1
 
       # Set up Swift using the correct action
       - name: Set up Swift
