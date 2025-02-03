@@ -11,20 +11,33 @@ on:
 jobs:
   build:
     name: Build and Test
-    runs-on: macos-latest
+    runs-on: macos-latest  # Uses the latest macOS runner
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Check Available Xcode Versions
+        run: ls /Applications | grep Xcode
+
+      - name: Select Xcode 16
+        run: sudo xcode-select -s /Applications/Xcode_16.app/Contents/Developer
+
+      - name: Print Xcode Version
+        run: xcodebuild -version
+
       - name: Clean Derived Data
         run: rm -rf ~/Library/Developer/Xcode/DerivedData
 
       - name: Resolve Swift Package Dependencies
-        run: xcodebuild -resolvePackageDependencies
+        run: swift package resolve
 
       - name: List Available Simulators
         run: xcrun simctl list
 
       - name: Build and Test
-        run: /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test -scheme Toolbox -destination "platform=iOS Simulator,name=iPhone 16 Pro"
+        run: |
+          xcodebuild clean test \
+          -scheme Toolbox \
+          -destination "platform=iOS Simulator,name=iPhone 16 Pro" \
+          -disableAutomaticPackageResolution NO
