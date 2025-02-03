@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Build and Test
-    runs-on: macos-latest  # Uses the latest macOS runner
+    runs-on: macos-latest
 
     steps:
       - name: Checkout code
@@ -21,7 +21,7 @@ jobs:
         run: ls /Applications | grep Xcode
 
       - name: Select Xcode 16
-        run: sudo xcode-select -s /Applications/Xcode_16.1.0.app/Contents/Developer
+        run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
 
       - name: Print Xcode Version
         run: xcodebuild -version
@@ -40,4 +40,4 @@ jobs:
           xcodebuild clean test \
           -scheme Toolbox \
           -destination "platform=iOS Simulator,name=iPhone 16 Pro" \
-          -disableAutomaticPackageResolution NO
+          -verbose
