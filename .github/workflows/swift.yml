@@ -18,12 +18,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Set up Swift using the correct action
-      - name: Set up Swift
-        uses: actions/setup-swift@v1
-        with:
-          swift-version: '5.5'  # Replace with the desired Swift version
-
       # Build and Test the package
       - name: Build and Test Step
         run: /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test -scheme Toolbox -destination "platform=iOS Simulator,name=iPhone 15 Pro"
