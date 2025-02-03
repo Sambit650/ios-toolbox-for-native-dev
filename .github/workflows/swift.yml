@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'release/*' # You can change this to any other branch pattern
+      - 'release/*'
   pull_request:
     branches: [ main ]
 
@@ -14,10 +14,17 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      # Checkout the code from GitHub
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Build and Test the package
-      - name: Build and Test Step
+      - name: Clean Derived Data
+        run: rm -rf ~/Library/Developer/Xcode/DerivedData
+
+      - name: Resolve Swift Package Dependencies
+        run: xcodebuild -resolvePackageDependencies
+
+      - name: List Available Simulators
+        run: xcrun simctl list
+
+      - name: Build and Test
         run: /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test -scheme Toolbox -destination "platform=iOS Simulator,name=iPhone 16 Pro"
