@@ -107,15 +107,13 @@ extension DateExtensionTests {
   }
 
   @Test("isToday", arguments: [
-    ("2025/02/15", true),
-    ("2025/02/14", false),
-    ("2025/02/16", false)
+    (0, true),    // Today
+    (-1, false),  // Yesterday
+    (1, false)    // Tomorrow
   ])
-  func test_isToday(input: (dateString: String, expected: Bool)) async throws {
+  func test_isToday(input: (offset: Int, expected: Bool)) async throws {
     // Given
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy/MM/dd"
-    let date = formatter.date(from: input.dateString)!
+    let date = Calendar.current.date(byAdding: .day, value: input.offset, to: Date())!
 
     // When
     let result = date.isToday
@@ -125,15 +123,13 @@ extension DateExtensionTests {
   }
 
   @Test("isYesterday", arguments: [
-    ("2025/02/14", true),
-    ("2025/02/15", false),
-    ("2025/02/16", false)
+    (-1, true),   // Yesterday
+    (0, false),   // Today
+    (1, false)    // Tomorrow
   ])
-  func test_isYesterday(input: (dateString: String, expected: Bool)) async throws {
+  func test_isYesterday(input: (offset: Int, expected: Bool)) async throws {
     // Given
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy/MM/dd"
-    let date = formatter.date(from: input.dateString)!
+    let date = Calendar.current.date(byAdding: .day, value: input.offset, to: Date())!
 
     // When
     let result = date.isYesterday
@@ -143,15 +139,13 @@ extension DateExtensionTests {
   }
 
   @Test("isTomorrow", arguments: [
-    ("2025/02/16", true),
-    ("2025/02/15", false),
-    ("2025/02/14", false)
+    (1, true),    // Tomorrow
+    (0, false),   // Today
+    (-1, false)   // Yesterday
   ])
-  func test_isTomorrow(input: (dateString: String, expected: Bool)) async throws {
+  func test_isTomorrow(input: (offset: Int, expected: Bool)) async throws {
     // Given
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy/MM/dd"
-    let date = formatter.date(from: input.dateString)!
+    let date = Calendar.current.date(byAdding: .day, value: input.offset, to: Date())!
 
     // When
     let result = date.isTomorrow
