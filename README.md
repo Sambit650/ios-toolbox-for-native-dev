@@ -62,7 +62,7 @@ We welcome contributions from developers of all experience levels. To contribute
 - Add unit tests for new functionality where applicable.
 
 ### Issues and Bugs
-If you encounter any issues or bugs, please report them via the [Issues](https://github.com/Sambit650/ios-toolbox-for-native-dev.git/issues) page. Make sure to include relevant details such as:
+If you encounter any issues or bugs, please report them via the [Issues](https://github.com/Sambit650/ios-toolbox-for-native-dev/issues) page. Make sure to include relevant details such as:
 - iOS version
 - Device type
 - Steps to reproduce the issue
